@@ -4,7 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { ComponentTypeContext } from "../../context/DynamicHomeComponents";
 import LandProgressBar from "../LandProgressBar/LandProgressBar";
 import axios from "axios";
-// import {useNavigate } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 import { useFileContext } from "../../context/FileContext";
 
 const LandDetails = () => {
@@ -20,10 +20,10 @@ const LandDetails = () => {
 
   const {
     indenture,
-    // formerAllocation,
-    // photographicID,
-    // sitePlan,
-    // passportPhoto,
+    formerAllocation,
+    photographicID,
+    sitePlan,
+    passportPhoto,
   } = useFileContext();
 
   const componentCtx = useContext(ComponentTypeContext);
@@ -45,60 +45,57 @@ const LandDetails = () => {
   const [purpose, setPurpose] = useState("Residence");
 
   const data = {
-    "landLocality": locality,
-    "siteName": siteName,
-    "plotNumbers": plotNumber,
-    "totalLandSize": landSize,
-    "streetName": streetName,
-    "landTransferor": contactNumber,
-    "dateOfOriginalTransfer":transferDate ?`${transferDate}T00:00:00Z` : "",
-    "purposeOfLand": purpose,
-    "contactOfTransferor":transferorContact,
-  }
+    landLocality: locality,
+    siteName: siteName,
+    plotNumbers: plotNumber,
+    totalLandSize: landSize,
+    streetName: streetName,
+    landTransferor: contactNumber,
+    dateOfOriginalTransfer: transferDate ? `${transferDate}T00:00:00Z` : "",
+    purposeOfLand: purpose,
+    contactOfTransferor: transferorContact,
+  };
 
-  useEffect(()=>{
-    const storedBasicInfo = localStorage.getItem('basicInfo');
+  useEffect(() => {
+    const storedBasicInfo = localStorage.getItem("basicInfo");
     if (storedBasicInfo) {
       const basicInfo = JSON.parse(storedBasicInfo);
       // Merge data with basicInfo
-      const updatedBasicInfo = { ...basicInfo, ...data};
-      localStorage.setItem('basicInfo', JSON.stringify(updatedBasicInfo));
+      const updatedBasicInfo = { ...basicInfo, ...data };
+      localStorage.setItem("basicInfo", JSON.stringify(updatedBasicInfo));
     }
+  }, [data]);
 
-  }, [data])
+  const navigate = useNavigate();
 
-  // const navigate = useNavigate(); 
-  
   const handleFormSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     const url = `${import.meta.env.VITE_APP_API_URL}new/apply`;
-    const dataEntered = localStorage.getItem('basicInfo');
+    const dataEntered = localStorage.getItem("basicInfo");
     const parsedDataEntered = dataEntered ? JSON.parse(dataEntered) : {};
-  //  const document=[
-  //     indenture,
-  //     formerAllocation,
-  //     sitePlan,
-  //     photographicID,
-  //     passportPhoto
-  //   ]
-    const entry = {...parsedDataEntered, documents:indenture}
+
+    const entry = {
+      ...parsedDataEntered,
+      indenture,
+      formerAllocation,
+      photographicID,
+      sitePlan,
+      passportPhoto,
+    };
     console.log(entry);
-    
+
     try {
       const response = await authorizedFetch(url, entry);
       console.log(response?.data);
-      // navigate("/myapplications");
-      setCurrentForm("basic")
-
+      navigate("/myapplications");
+      setCurrentForm("basic");
     } catch (error) {
       console.log(error);
       return;
     }
-    localStorage.removeItem('basicInfo');
+    localStorage.removeItem("basicInfo");
   };
-  
 
-  
   return (
     <div>
       <div className={styles.breadScrum}>
@@ -327,22 +324,25 @@ const LandDetails = () => {
 
 export default LandDetails;
 
-
 const authorizedFetch = async (url: string, data: unknown) => {
   try {
-      const token = localStorage.getItem('token')
-      if (!token) {
-          throw new Error('Authorization token not found')
-      }
-      const headers = {
-          Authorization: `Bearer ${token}`,
-          'Content-Type':'multipart/form-data'
-      }
-      const response = await axios.post(url, data, { headers })
-      return response
+    const token = localStorage.getItem("token");
+    if (!token) {
+      throw new Error("Authorization token not found");
+    }
+    const headers = {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "multipart/form-data",
+    };
+    const response = await axios.post(url, data, { headers });
+    return response;
   } catch (error) {
-      if (axios.isAxiosError(error) && error.response && error.response.status === 401) {
-          alert('Session expired, log out and log in again');
-      } 
+    if (
+      axios.isAxiosError(error) &&
+      error.response &&
+      error.response.status === 401
+    ) {
+      alert("Session expired, log out and log in again");
+    }
   }
-}
+};
