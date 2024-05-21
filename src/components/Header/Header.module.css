@@ -1,0 +1,151 @@
+.header {
+    position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff; 
+  z-index: 1000; 
+    display: flex;
+    justify-content: space-between;
+    padding: 0.2rem 2rem;
+    height: 12vh;
+    align-items: center;    
+}
+
+.formenu {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.menu nav ul {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.menu nav ul li {
+    list-style: none;
+}
+
+.actions nav ul {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.actions nav ul li {
+    list-style: none;
+    text-decoration: none;
+}
+
+.menu nav ul li a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.lang {
+    display: flex;
+    gap: 0.4rem;
+    align-items: center;
+}
+
+.signup {
+    padding: 0.3rem 1rem;
+    border-radius: 0.4rem;
+    color: white;
+    background-color: var(--green);
+    font-weight: 600;
+    height: 44px;
+    display: grid;
+    place-content: center;
+}
+.signup:hover{
+    background-color: var(--hover-green);
+
+}
+.link{
+    text-decoration: none;
+    color: inherit;
+}
+
+.menubar {
+    display: none;
+}
+
+.menuLayer {
+    display: none;
+}
+.mobileNav ul li a{
+        text-decoration: none;
+        color: inherit;
+}
+@media screen and (max-width:640px) {
+
+    .header {
+        position:static;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: none; 
+        padding: 0.2rem 1rem;
+    }
+
+    .logo {
+        width: 3rem;
+    }
+
+    .menu {
+        display: none;
+    }
+
+   
+
+    .lang {
+        display: none;
+    }
+
+    .menubar {
+        display: block;
+    }
+
+    .icon {
+        font-size: 2rem;
+    }
+
+    .menuLayer {
+        height: 100vh;
+        width: 60vw;
+        z-index: 100;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        background-color: white;
+        box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.2);
+        padding: 1rem;
+        display: block;
+        overflow: hidden;
+    }
+
+    .openedMenuHeader {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .menuLayer nav {
+        margin-top: 2rem;
+    }
+
+    .menuLayer nav ul {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+
+    }
+
+    .menuLayer nav ul li {
+        list-style: none;
+        margin-left: -2rem;
+    }
+}

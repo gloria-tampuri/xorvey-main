@@ -1,0 +1,127 @@
+.ticket{
+position: fixed;
+bottom: 12%;
+right: 5%;
+width: 368px;
+z-index: 100;
+}
+.ticketForm{
+    background-color: white;
+    width: 100%;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 24px 48px -12px #10182889  ;
+}
+.ticketForm p{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+}
+.ticketForm form{
+    font-size: 0.8rem;
+    
+}
+.icon{
+    color: var(--hover-green);
+    font-size: 1.5rem;
+}
+
+.ticketbutton{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-color:#FF692E ;
+    align-self: right;
+    display: grid;
+    place-content: center;
+}
+
+.button{
+    display: flex;
+    justify-content: right;
+}
+
+.section{
+    margin: 0.5rem 0;
+}
+
+.section label{
+    display: block;
+    margin-bottom: 0.3rem;
+    color: #344054;
+}
+
+.section input{
+    display: block;
+    width: 100%;
+    outline: none;
+    border: 1px solid #D0D5DD;
+    border-radius: 0.5rem;
+    padding: 0.3rem 0.5rem;
+    color: var(--input-color);
+}
+
+.section select{
+    width: 100%;
+    background-color: white;
+    border: 1px solid #D0D5DD;
+    padding: 0.3rem 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.section select option:hover{
+    background-color: #F2F4F7;
+}
+
+.section input:focus{
+    border: 1px solid #6CE9A6;    ;
+    box-shadow: 0 0 0 4px #F0FAEE;
+}
+.section select:focus{
+    border: 1px solid #6CE9A6;    ;
+    box-shadow: 0 0 0 4px #F0FAEE;
+}
+.section input::placeholder{
+    color: #667085;
+}
+
+.section textarea{
+    display: block;
+    width: 100%;
+    outline: none;
+    border: 1px solid #D0D5DD;
+    border-radius: 0.5rem;
+    padding: 0.3rem 0.5rem;
+    color: var(--input-color);
+}
+
+.section textarea:focus{
+    border: 1px solid #6CE9A6;    ;
+    box-shadow: 0 0 0 4px #F0FAEE;
+}
+
+.buttons {
+    display: flex;
+    justify-content: right;
+    gap: 1rem;
+}
+
+.buttons button{
+    padding: 0.3rem 1rem;
+    border-radius: 0.5rem;
+}
+
+.submit{
+    background-color: var(--green);
+    color: white;
+    border: none;
+}
+.submit:hover{
+background-color: var(--hover-green);
+}
+
+.buttons .cancel  {
+    border: 1px solid #D0D5DD;
+}

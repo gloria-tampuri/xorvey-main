@@ -1,0 +1,162 @@
+.dash{
+    padding: 2rem 3rem ;
+}
+
+.details{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dashcard{
+    min-width: 30%;
+    padding: 1rem 2rem;
+    border: 1px solid #EAECF0;
+    box-shadow: 0 1px 2px 0 #1018281d;
+    border-radius: 0.5rem;
+}
+
+.lower{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-top: 0.4rem;
+}
+.lower h1{
+    font-size: 36px;
+    font-weight: 600;
+}
+
+.lower p{
+    display: flex;
+    color: var(--green);
+    align-items: center;
+    background-color: #ECFDF3;
+    padding: 3px 10px;
+    border-radius: 1rem;
+}
+
+.application{
+    margin: 2rem 0;
+    border: 1px solid #EAECF0;
+    height: 80vh;
+    overflow: scroll;
+    border-radius: 1rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+}
+
+ .filterDiv{
+    display: flex;
+    align-items: center;
+ } 
+.search{
+    display: flex;
+    font-size: 0.9rem;
+    gap: 1rem;
+    margin:1rem;
+    padding: 0.5rem;
+    border: 1px solid #D0D5DD;
+    border-radius: 0.4rem;
+    align-items: center;
+    width: 320px;
+  }
+
+  .search input{
+    background-color: white;
+    outline: none;
+    border: none;
+  }
+
+  .search .icon{
+    font-size: 1.4rem;
+  }
+
+  .filter{
+    border: 1px solid #D0D5DD;
+    border-radius: 0.4rem;
+    padding: 0.5rem;
+    display: flex;
+    gap: 0.3rem;
+  }
+
+  .filter select{
+    border: none;
+    background-color: white;
+  }
+
+  .filter select option:hover{
+background-color:#F2F4F7 ;
+  }
+
+  .tablehead {
+    padding: 0.5rem 1rem;
+    background-color: #F9FAFB;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    gap: 3rem;
+    align-items: center;
+}
+
+.persons {
+  display: flex;
+  align-items: center;
+}
+.tablebody {
+  display: grid;
+  padding: 0.5rem 1rem;
+  grid-template-columns:  1fr 1fr 1fr 1fr 1fr;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+  font-size: 0.8rem;
+  border-bottom: 1px solid #EAECF0;
+}
+
+.id {
+  color: #101828;
+  display: grid;
+  grid-template-columns: 1fr 1fr 5fr;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.id input {
+  width: 1rem;
+  height: 1rem;
+  align-items: left;
+  border-radius: 2px;
+}
+
+input[type=checkbox] {
+  accent-color: #ECFDF3;
+  color: #acebce;
+  border: 1px solid #039855;
+  font-weight: 100;
+}
+
+.status{
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.status p{
+ padding: 2px 8px;
+ border-radius: 16px;
+ background-color:#ECFDF3 ;
+ color: #039855;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+}
+.card{
+  color: inherit;
+}

@@ -1,0 +1,169 @@
+.allstatus{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.allstatus p{
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.active{
+  color: #039855;
+  background-color: #ECFDF3;
+  border-radius: 0.5rem;
+}
+.application{
+    margin: 1rem;
+    border: 1px solid #EAECF0;
+    height: 80vh;
+    overflow: scroll;
+    border-radius: 1rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+}
+
+ .filterDiv{
+    display: flex;
+    align-items: center;
+ } 
+.search{
+    display: flex;
+    font-size: 0.9rem;
+    gap: 1rem;
+    margin:1rem;
+    padding: 0.5rem;
+    border: 1px solid #D0D5DD;
+    border-radius: 0.4rem;
+    align-items: center;
+    width: 320px;
+  }
+
+  .search input{
+    background-color: white;
+    outline: none;
+    border: none;
+  }
+
+  .search .icon{
+    font-size: 1.4rem;
+  }
+
+  .filter{
+    border: 1px solid #D0D5DD;
+    border-radius: 0.4rem;
+    padding: 0.5rem;
+    display: flex;
+    gap: 0.3rem;
+  }
+
+  .filter select{
+    border: none;
+    background-color: white;
+  }
+
+  .filter select option:hover{
+background-color:#F2F4F7 ;
+  }
+
+  .tablehead {
+    padding: 0.5rem 1rem;
+    background-color: #F9FAFB;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    gap: 3rem;
+    align-items: center;
+}
+
+.persons {
+  display: flex;
+  align-items: center;
+}
+.tablebody {
+  display: grid;
+  padding: 0.5rem 1rem;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+  font-size: 0.8rem;
+  border-bottom: 1px solid #EAECF0;
+}
+
+.id {
+  color: #101828;
+  display: grid;
+  grid-template-columns: 1fr 1fr 5fr;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.id input {
+  width: 1rem;
+  height: 1rem;
+  align-items: left;
+  border-radius: 2px;
+}
+
+input[type=checkbox] {
+  accent-color: #ECFDF3;
+  color: #acebce;
+  border: 1px solid #039855;
+  font-weight: 100;
+}
+
+.status{
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+    position: relative;
+
+}
+.status p{
+ padding: 2px 8px;
+ border-radius: 16px;
+ background-color:#ECFDF3 ;
+ color: #039855;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+}
+.card{
+  color: inherit;
+  text-decoration:none;
+  padding: 0.3rem 0.5rem;
+}
+
+.card:hover{
+ background-color:#F2F4F7
+}
+
+.continue{
+  padding: 0.5rem;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 20px;
+  background-color: white;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+

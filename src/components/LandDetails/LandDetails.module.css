@@ -1,0 +1,163 @@
+.progress{
+    width: 100%;
+    margin: 2rem auto;
+}
+.breadScrum{
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #667085;
+    font-weight: 400;
+    cursor: pointer;
+}
+.active{
+    color: #12B76A;
+}
+.all{
+    overflow: hidden;
+    width: 70%;
+    margin: 3rem auto;
+}
+.basicForm{
+    width: 100%;
+    border-radius: 1rem;
+    border: 1px solid #D0D5DD;
+}
+.section select option:hover{
+    background-color:#F2F4F7 ;
+}
+.section select{
+    background-color: white;
+}
+.section input::placeholder{
+    color: #667085;
+}
+.section input:focus{
+    border: 1px solid #6CE9A6;    ;
+    box-shadow: 0 0 0 4px #F0FAEE;
+}
+.head{
+    padding: 1rem 0;
+   text-align: center;
+   border-bottom:1px solid #D0D5DD ; 
+}
+
+.form form{
+    width:80% ;
+    margin: 2rem auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.right{
+    width: 45%;
+}
+.left{
+    width:45% ;
+}
+
+.section{
+    width: 100%;
+    margin: 1rem 0;
+}
+
+.section label{
+display: block;
+color: #344054;
+margin-bottom: 0.3rem;
+}
+
+.section input{
+    display: block;
+    width: 100%;
+    border:1px solid #D0D5DD ;
+    border-radius: 0.5rem; 
+    padding: 0.3rem 0.5rem;
+    outline: none;
+    height: 42px;
+
+}
+
+.section select{
+    display: block;
+    width: 100%;
+    border:1px solid #D0D5DD ;
+    border-radius: 0.5rem; 
+    padding: 0.5rem 0.5rem;
+    outline: none;
+    height: 42px;
+
+}
+
+.section select option:hover{
+    background-color:#F2F4F7 ;
+}
+.section input::placeholder{
+    color: #667085;
+}
+.section input:focus{
+    border: 1px solid #6CE9A6;    ;
+    box-shadow: 0 0 0 4px #F0FAEE;
+}
+
+.section select:focus{
+    border: 1px solid #6CE9A6;    ;
+    box-shadow: 0 0 0 4px #F0FAEE;
+}
+
+.buttons{
+    display: flex;
+    align-items: right;
+    justify-content: right;
+    margin-top: 1rem;
+    gap: 1rem;
+}
+.buttons button{
+    width: fit-content;
+    padding: 0.3rem 1rem;
+    background-color: var(--green);
+    color: white;
+    border-radius: 0.5rem;
+    border: none;
+    height: 44px;
+    font-weight: 600;
+
+}
+
+.buttons button:hover{
+    background-color: var(--hover-green);
+}   
+ .buttons .previous{
+    background-color: white;
+    color: #344054;
+    border:1px solid #D0D5DD ;
+    border-radius: 0.5rem;
+    padding: 0.3rem 0.5rem;
+
+}
+.buttons .previous:hover{
+    background-color:#F9FAFB
+    ;
+}
+
+@media screen and (max-width:640px) {
+   
+    .all{
+        width: 100%;
+
+    }
+
+    .form form{
+        width: 100%;
+        flex-direction:column;
+        padding: 1rem;
+    }
+    .right{
+        width: 100%;
+    }
+
+    .left{
+        width: 100%;
+    }
+}

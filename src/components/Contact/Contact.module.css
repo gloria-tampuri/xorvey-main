@@ -1,0 +1,184 @@
+.contact{
+    margin-top: 6rem;
+   padding-top: 15vh;
+}
+
+.contact h4{
+    margin: 0 auto;
+    width: fit-content;
+    padding-right: 1.5rem;
+    border-right: 2px solid var(--green);
+}
+
+.section1{
+    background-color:#F6FEF9;
+    width: 100;
+}
+
+.innersection{
+    width: 90%;
+    margin: 2rem auto;
+    display: flex;
+    padding: 3rem 0;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.text{
+    width: 45%;
+}
+
+.h2{
+    padding-left: 2rem;
+}
+
+.text .first{
+    color: #475467;
+    margin: 1rem 0;
+}
+
+.second{
+    color: #667085;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.third{
+    margin-bottom: 1rem;
+}
+
+.form{
+padding: 2rem;
+width: 40%;
+background-color: white;
+border: 1px solid #EAECF0;
+border-radius: 0.5rem;
+box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.2);
+overflow-x: hidden;
+}
+
+.name{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.name .nameinput{
+    width: 45%;
+    border: 1px solid #EAECF0 ;
+    padding: 0.3rem 0.5rem;
+    border-radius: 0.5rem;
+    outline: none;
+}
+
+.name .nameinput:focus{
+    border: 1px solid #6CE9A6;    ;
+    box-shadow: 0 0 0 4px #F0FAEE;
+}
+
+
+.name .nameinput::placeholder{
+    color: #667085;
+}
+
+
+.section{
+    margin: 1rem 0;
+    background-color: white;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    width: 100%;
+    border: 1px solid #EAECF0 ;
+    padding: 0.3rem 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.section input{
+    border: none;
+    outline: none;   
+}
+
+.section textarea{
+    border: none;
+    outline: none;  
+    width: fit-content; 
+}
+.section:focus-within{
+    border: 1px solid #6CE9A6;    ;
+    box-shadow: 0 0 0 4px #F0FAEE;
+}
+.section input::placeholder{
+    color: #667085;
+}
+
+.section textarea::placeholder{
+    color: #667085;
+}
+.form button{
+    width: 100%;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    background-color: var(--green);
+    color: white;
+    font-weight: 600;
+    height: 44px;
+}
+
+.form button:hover{
+    background-color: var(--hover-green);
+}
+
+.note{
+    width: 80%;
+    font-size: 0.8rem;
+    margin: 0 auto;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.note span{
+    color: #475467;
+    font-weight: 700;
+}
+
+@media screen and (max-width:640px) {
+    .innersection{
+        width: 100%;
+        padding: 1rem;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .text{
+        width: 100%;
+    }
+
+    .form{
+        width: 100%;
+    }
+
+    .text h1{
+        font-size: 2rem;
+    }
+
+    .h2{
+        display: inline;
+        padding-left: 0.5rem;
+    }
+    .heads{
+        display: flex;
+        width: fit-content;
+        margin: 0 auto;
+    }
+
+    .text p{
+        text-align: center;
+    }
+
+    .social{
+        display: grid;
+        place-content: center;
+    }
+}

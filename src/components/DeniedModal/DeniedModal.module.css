@@ -1,0 +1,64 @@
+.approve{
+    padding: 1rem;
+}
+
+.approve h3{
+    margin-bottom: 1rem;
+}
+
+.approve svg{
+    margin-bottom: 1rem;
+}
+
+.approve p{
+    width: 95%;
+}
+.buttons{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.3rem;
+}
+.approve form{
+width: 100%;
+}
+
+.approve form label{
+    display: block;
+    margin: 0.5rem 0;
+    color: #344054;
+}
+.approve form textarea{
+    width: 100%;
+    height: 128px;
+    overflow: scroll;
+    border: 1px solid #D0D5DD;
+    border-radius: 0.5rem;
+    outline: none;
+    padding: 0.5rem;
+}
+
+.approve textarea:focus{
+    border: 1px solid #6CE9A6;    ;
+    box-shadow: 0 0 0 4px #F0FAEE;
+}
+.buttons button{
+    width: 45%;
+    padding: 0.3rem 0;
+    background-color: white;
+    border: 1px solid #D0D5DD;
+    border-radius: 0.3rem;
+}
+
+.buttons .deniedb{
+    color: white;
+    background-color:#D92D20;
+    border: none;
+}
+
+.buttons button:hover{
+    background-color:#F9FAFB ;
+}
+
+
+
+

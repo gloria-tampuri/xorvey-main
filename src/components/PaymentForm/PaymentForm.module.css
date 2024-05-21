@@ -1,0 +1,151 @@
+.progress{
+    width: fit-content;
+    margin: 2rem auto;
+}
+.back{
+    margin: 2rem ;
+}
+.breadScrum{
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #667085;
+    font-weight: 400;
+    cursor: pointer;
+}
+.active{
+    color: #12B76A;
+}
+.all{
+    overflow: hidden;
+    width: 70%;
+    margin: 3rem auto;
+}
+.basicForm{
+    width: 100%;
+    border-radius: 1rem;
+    border: 1px solid #D0D5DD;
+}
+
+.head{
+    padding: 1rem 0;
+   text-align: center;
+   border-bottom:1px solid #D0D5DD ; 
+}
+
+.form form{
+    width:80% ;
+    margin: 2rem auto;
+   display: grid;
+   place-content: center;
+}
+.Mobilepayment{
+    border: 1px solid #D0D5DD;
+    padding: 1rem;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+}
+.Mobilepayment p{
+    display: flex;
+    margin: 1rem 0;
+    gap: 0.4rem;
+    align-items: center;
+}
+
+.momohead{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom:1px solid #D0D5DD ; 
+
+}
+.momohead div{
+    display: flex;
+    gap: 0.3rem;
+    align-items: center;
+}
+.section{
+    width: 100%;
+    margin: 1rem 0;
+}
+
+.section label{
+display: block;
+color: #344054;
+margin-bottom: 0.3rem;
+}
+
+.section input{
+    display: block;
+    width: 100%;
+    border:1px solid #D0D5DD ;
+    border-radius: 0.5rem; 
+    padding: 0.3rem 0.5rem;
+    outline: none;
+}
+
+.section select{
+    display: block;
+    width: 100%;
+    border:1px solid #D0D5DD ;
+    border-radius: 0.5rem; 
+    padding: 0.5rem 0.5rem;
+    outline: none;
+    background-color: white;
+}
+.section input:focus{
+    border: 1px solid #6CE9A6;    ;
+    box-shadow: 0 0 0 4px #F0FAEE;
+}
+.section select:focus{
+    border: 1px solid #6CE9A6;    ;
+    box-shadow: 0 0 0 4px #F0FAEE;
+}
+.section select option:hover{
+    background-color:#F2F4F7 ;
+}
+.section input::placeholder{
+    color: #667085;
+}
+
+.note{
+    font-size: 0.85rem;
+    color:#667085 ;
+    font-weight: 500;
+    padding-bottom: 0.4rem;
+}
+
+.buttons{
+    display: flex;
+    align-items: right;
+    justify-content: right;
+    margin-top: 1rem;
+    gap: 1rem;
+    text-decoration: none;
+}
+.buttons{
+    width: fit-content;
+    padding: 0.3rem 0.5rem;
+    background-color: var(--green);
+    color: white;
+    border-radius: 0.5rem;
+    height: 44px;
+    display: grid;
+    place-content: center;
+    font-weight: 600px;
+    border: none;
+}
+
+.buttons:hover{
+    background-color: var(--hover-green);
+}
+
+.buttons .previous{
+    background-color: white;
+    color: #344054;
+    border:1px solid #D0D5DD ;
+    border-radius: 0.5rem;
+    padding: 0.3rem 0.5rem;
+
+}

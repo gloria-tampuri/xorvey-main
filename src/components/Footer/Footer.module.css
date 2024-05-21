@@ -1,0 +1,17 @@
+.footer{
+    padding: 1rem;
+    width: 90%;
+    margin: 1rem auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+}
+
+@media screen and (max-width:640px) {
+    .footer{
+        width: 100%;
+        flex-direction: column;
+        gap: 1rem;
+    }
+}

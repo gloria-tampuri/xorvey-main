@@ -1,0 +1,9 @@
+.all{
+    padding: 2rem 3rem;
+}
+
+@media screen and (max-width:640px) {
+.all{
+    padding: 1rem;
+
+}}
