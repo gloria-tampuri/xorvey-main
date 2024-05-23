@@ -106,7 +106,6 @@ const ForgotPassword = () => {
       });
             if (response.ok) {
               const responseData = await response.json();
-              console.log(responseData);
               localStorage.setItem('optPrefix', JSON.stringify(responseData)); // Stringify responseData before storing
               setShowopt(true);
       } else {
@@ -148,7 +147,6 @@ const ForgotPassword = () => {
     // Join otpValues array to get the complete OTP value
     const otpString = newOtpValues.join('');
     setOtpValue(otpString);
-    console.log('OTP:', otpString);
   };
   
 
@@ -193,7 +191,6 @@ const ForgotPassword = () => {
         },
         body: JSON.stringify(data),
       });
-      console.log(response);
       if (response.ok) {
         navigate('/resetpassword')
         setShowopt(true);
@@ -239,7 +236,6 @@ const ForgotPassword = () => {
         },
         body: JSON.stringify(data),
       });
-      console.log(response);
       if (response.ok) {
         setShowopt(true);
       } else {

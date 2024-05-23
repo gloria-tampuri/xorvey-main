@@ -95,7 +95,6 @@ const LandDetails = () => {
       sitePlan,
       passportPhoto,
     };
-    console.log(entry);
 
     try {
       const response = await authorizedFetch(url, entry);
@@ -103,7 +102,6 @@ const LandDetails = () => {
       navigate("/myapplications");
       setCurrentForm("basic");
     } catch (error) {
-      console.log(error);
       return;
     }
     localStorage.removeItem("basicInfo");

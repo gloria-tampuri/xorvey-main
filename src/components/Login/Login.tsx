@@ -98,7 +98,6 @@ const Login = () => {
           axios.get(apiUrl, config)
             .then(response => {
               // Handle the successful response
-              console.log(response.data);
               if (response.data.success) {
                 // Navigate to my applications
                 navigate("/myapplications");

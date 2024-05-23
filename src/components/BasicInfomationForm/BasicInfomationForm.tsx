@@ -59,8 +59,6 @@ const BasicInfomationForm = () => {
       alert("Please fill out all the required fields");
       return;
     }
-    // const iso =new Date(dateOfBirth).toISOString()
-    console.log('clicked');
     setCurrentForm("document");
     const basicInfo = {
     "applicantName": applicantName,

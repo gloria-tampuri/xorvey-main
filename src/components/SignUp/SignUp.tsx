@@ -67,7 +67,6 @@ const SignUp = () => {
           },
         }
       );
-      console.log(response.data);
 
       if (response.status === 200) {
         navigate("/login");
@@ -75,7 +74,6 @@ const SignUp = () => {
         setPassword("");
       }
     } catch (error) {
-      console.log(error);
     }finally{
       setLoading(false)
     }

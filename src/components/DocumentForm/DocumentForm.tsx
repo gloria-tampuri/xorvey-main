@@ -13,15 +13,10 @@ const DocumentForm = () => {
 
   const { setCurrentForm } = formCtx;
   const {
-    indenture,
     setIndenture,
-    formerAllocation,
     setFormerAllocation,
-    photographicID,
     setPhotographicID,
-    sitePlan,
     setSitePlan,
-    passportPhoto,
     setPassportPhoto,
   } = useFileContext();
 
@@ -51,7 +46,6 @@ const DocumentForm = () => {
   };
 
   const type = localStorage.getItem('type');
-console.log(indenture,formerAllocation,photographicID,passportPhoto,sitePlan);
 
   return (
     <div>

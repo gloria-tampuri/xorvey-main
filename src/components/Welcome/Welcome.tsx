@@ -22,7 +22,6 @@ const config = {
 const apiUrl = `${import.meta.env.VITE_APP_API_URL}new/applications`;
 axios.get(apiUrl, config)
   .then(response => {
-    // Handle the successful response
     console.log(response.data);
   
   })

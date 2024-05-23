@@ -24,7 +24,6 @@ const InspectorHeader = () => {
       const userString = localStorage.getItem("user");
       if (userString !== null) {
         const user = JSON.parse(userString);
-        console.log(user);
         setName(user.name);
         setInitials(getInitials(user.name)); // Set initials when user name is available
       } else {

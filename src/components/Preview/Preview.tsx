@@ -44,7 +44,6 @@ const Preview = () => {
   const location = useLocation();
   const pathname = location.pathname;
   const uniqueFormID = pathname.split("/").pop();
-  console.log(uniqueFormID);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -82,7 +81,6 @@ const Preview = () => {
     setShowTrack(false);
   };
 
-  console.log(application);
 
   return (
     <div className={styles.preview}>

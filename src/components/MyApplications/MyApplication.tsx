@@ -54,9 +54,7 @@ const MyApplication = () => {
         console.error("Error:", error);
       });
   }, []);
-  console.log(filledForms);
-  console.log(unusedForms);
-  console.log(allForms);
+
 
   const [showContinueArray, setShowContinueArray] = useState(
     Array(unusedForms.length).fill(false)
@@ -65,6 +63,7 @@ const MyApplication = () => {
   const resetShowContinueArray = () => {
     setShowContinueArray(Array(unusedForms.length).fill(false));
   };
+console.log(allForms);
 
   return (
     <div>
