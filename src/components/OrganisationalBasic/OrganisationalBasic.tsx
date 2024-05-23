@@ -3,6 +3,7 @@ import styles from './OrganisationalBasic.module.css'
 import { FormContext } from '../../context/DynamicFormContext';
 import { ComponentTypeContext } from '../../context/DynamicHomeComponents';
 import BasicProgressBar from '../BasicProgressBar/BasicProgressBar';
+import { useFileContext } from '../../context/FileContext';
 
 const OrganisationalBasic = () => {
   const formCtx = useContext(FormContext);
@@ -11,12 +12,11 @@ const OrganisationalBasic = () => {
   }
 
   const { setCurrentForm } = formCtx;
-  const [applicantName, setApplicantName] = useState("");
+  const [organisationName, setOrganisationName] = useState("");
   const [mailingAddress, setMailingAddress] = useState("");
   const [email, setEmail] = useState("");
   const [contactNumber, setContactNumber] = useState("");
   const [placeOfResidence, setPlaceOfResidence] = useState("");
-  const[logo,setLogo]=useState<File | null>(null)
 
   const componentCtx = useContext(ComponentTypeContext);
   const handleFileChange = (
@@ -52,21 +52,31 @@ const OrganisationalBasic = () => {
 
     // Check if any field is empty
     if (
-      !applicantName ||
+      !organisationName ||
       !mailingAddress ||
       !email ||
       !contactNumber ||
-      !placeOfResidence ||
-      !logo
+      !placeOfResidence
     ) {
       alert("Please fill out all the required fields");
       return;
     }
 
-    console.log('clicked');
+    const basicInfo ={
+      "organisationName":organisationName,
+      "mailingAddress":mailingAddress,
+      "emailAddress":email,
+      "contactNumber":contactNumber,
+      "location":placeOfResidence
+    }
+
+    localStorage.setItem('basicInfo', JSON.stringify(basicInfo));    
+
     setCurrentForm("organization document");
     
   };
+
+  const{setLogo}=useFileContext()
 
   const type = localStorage.getItem("type");
   return (
@@ -147,8 +157,8 @@ const OrganisationalBasic = () => {
                   type="text"
                   placeholder="Enter name of organization"
                   required
-                  value={applicantName}
-                  onChange={(e) => setApplicantName(e.target.value)}
+                  value={organisationName}
+                  onChange={(e) => setOrganisationName(e.target.value)}
                 />
               </div>
               <div className={styles.section}>

@@ -1,45 +1,75 @@
 import styles from './PaymentForm.module.css'
 import { FormContext } from "../../context/DynamicFormContext";
-import { useContext} from 'react';
-// import NetworkProviders from '../SVGs/NetworkProviders';
-// import { IoIosArrowDown } from "react-icons/io";
-// import { IoIosArrowUp } from "react-icons/io";
-// import Visa from '../SVGs/Visa';
+import { useContext, useEffect, useState} from 'react';
+
 import { ComponentTypeContext } from '../../context/DynamicHomeComponents';
 import { Link,useNavigate } from 'react-router-dom';
 
 const PaymentForm = () => {
     const navigate=useNavigate()
+    const [checkoutUrl, setCheckoutUrl] = useState<string | null>(null);
+    const [isLoading, setIsLoading] = useState(true);
+    const [storedCheckoutUrl, setStoredCheckoutUrl] = useState<string | null>(null); // New state variable
+    const [loadingTimeout, setLoadingTimeout] = useState<NodeJS.Timeout | null>(null);
+
+
 
     const formCtx = useContext(FormContext);
     if (!formCtx) {
       return null;
     }
   
-    // const { setCurrentForm } = formCtx;
     const componentCtx = useContext(ComponentTypeContext);
 
   if (!componentCtx) {
     return null;
   }
 
-    // const handleToBasicForm=()=>{
-    //     // setCurrentForm("basic")
-    //     if(type==='Individual'){
-    //               setCurrentForm("basic")
-    //     }else if(type === 'Organization'){
-    //       setCurrentForm('organisation basic')
-    //     }else if(type ==='Joint'){
-    //       setCurrentForm('joint basic')
-    //     }
-    //   }
-      // const type = localStorage.getItem("type");
+  
       const backhandler =()=>{
         navigate('/applicanthome')
       }
-      // const type = localStorage.getItem("type");
+      // useEffect(() => {
+      //   const url = localStorage.getItem('checkoutUrl');
+      //   if (url) {
+      //     setCheckoutUrl(url);
+      //     setStoredCheckoutUrl(url);
+      //     setIsLoading(false);
+      //   }
+    
+      //   // Cleanup function
+      //   return () => {
+      //     setCheckoutUrl(null);
+      //     setStoredCheckoutUrl(null);
+      //     setIsLoading(true);
+      //   };
+      // }, [storedCheckoutUrl]);
+    
+      useEffect(() => {
+        const url = localStorage.getItem('checkoutUrl');
+        if (url) {
+          setCheckoutUrl(url);
+          setStoredCheckoutUrl(url);
+          setIsLoading(false);
+          if (loadingTimeout) clearTimeout(loadingTimeout);
+        } else {
+          // Set a timeout to refresh the page after 3 seconds if checkoutUrl is not set
+          const timeout = setTimeout(() => {
+            window.location.reload();
+          }, 3000);
+          setLoadingTimeout(timeout);
+        } // Cleanup function
+        return () => {
+          setCheckoutUrl(null);
+          setStoredCheckoutUrl(null);
+          setIsLoading(true);
+          if (loadingTimeout) clearTimeout(loadingTimeout);
+        };
+      }, [storedCheckoutUrl, loadingTimeout]);
 
-      const checkoutUrl = localStorage.getItem('checkoutUrl')
+      const moveToCheckout=()=>{
+        localStorage.clear()
+      }
 
   return (
    <div>
@@ -55,12 +85,17 @@ const PaymentForm = () => {
            <p>Please note that a purchase is required to access the application form</p>
        </div>
        <div className={styles.form}>
-        <form>
-        {checkoutUrl && (
-  <Link to={checkoutUrl} className={styles.buttons}>
-    Click Here to make payments
-  </Link>
-)}        </form>
+       <form>
+       {checkoutUrl ? (
+                                <Link to={checkoutUrl} className={styles.buttons} onClick={moveToCheckout}>
+                                    {isLoading ? 'loading' : 'Click Here to make payments'}
+                                </Link>
+                            ) : (
+                                <button disabled className={styles.buttons}>
+                                    Loading...
+                                </button>
+                            )}
+            </form>
        </div>
    </div>
       
@@ -70,70 +105,3 @@ const PaymentForm = () => {
 
 export default PaymentForm
 
-
-{/* <form>
-               
-<div className={styles.section}>
-    <label>Payment Type*</label>
-    <select name="" id="">
-     <option>Part payment</option>
-     <option>Full Payment</option>
-    </select>
-</div>
-<p className={styles.note}>NB: Price of Application form is GHC 200.00</p>
-<div className={styles.Mobilepayment}>
-<div className={styles.momohead}>
-<p><svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="1" y="0.5" width="15" height="15" rx="7.5" fill="#F9F5FF"/>
-<rect x="1" y="0.5" width="15" height="15" rx="7.5" stroke="#039855"/>
-<circle cx="8.5" cy="8" r="3" fill="#039855"/>
-</svg>Mobile money
-</p>
-<div><NetworkProviders/>
-{openNetwork?<IoIosArrowUp onClick={()=>setOpenNetwork(false)}/>:<IoIosArrowDown onClick={()=>setOpenNetwork(true)}/>}</div>
-</div>
-{openNetwork && <div className={styles.details}>
-<div className={styles.section}>
-    <label>Name*</label>
-   <input type='text' placeholder='Enter your name here'/>
-</div>
-<div className={styles.section}>
-    <label>Mobile Money Provider*</label>
-    <select name="" id="">
-     <option>Choose network provider</option>
-     <option>MTN</option>
-     <option>Vodafone</option>
-    </select>
-</div>
-<div className={styles.section}>
-    <label>Mobile Money Number*</label>
-   <input type='text' placeholder='Enter mobile money number'/>
-</div>
-</div>}
-</div>
-
-<div className={styles.Mobilepayment}>
-<div className={styles.momohead}>
-<p><svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="1" y="0.5" width="15" height="15" rx="7.5" fill="#F9F5FF"/>
-<rect x="1" y="0.5" width="15" height="15" rx="7.5" stroke="#039855"/>
-<circle cx="8.5" cy="8" r="3" fill="#039855"/>
-</svg>Bank Card
-</p>
-<div>
-<Visa/>
-{openBank?<IoIosArrowUp onClick={()=>setOpenBank(false)}/>:<IoIosArrowDown onClick={()=>setOpenBank(true)}/>}</div>
-</div>
-{openBank && <div className={styles.details}>
-<div className={styles.section}>
-    <label>Card Number*</label>
-   <input type='text' placeholder='Enter card number'/>
-</div>
-<div className={styles.section}>
-    <label>Expiry Date*</label>
-   <input type='date' placeholder=''/>
-</div>
-</div>}
-</div>
-
-</form> */}

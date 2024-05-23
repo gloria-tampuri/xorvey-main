@@ -12,6 +12,12 @@ interface FileContextType {
   setSitePlan: React.Dispatch<React.SetStateAction<File | null>>;
   passportPhoto: File | null;
   setPassportPhoto: React.Dispatch<React.SetStateAction<File | null>>;
+  logo:File| null;
+  setLogo: React.Dispatch<React.SetStateAction<File | null>>;
+  cadastral:File| null;
+  setCadastral: React.Dispatch<React.SetStateAction<File | null>>
+  other:File| null;
+  setOther: React.Dispatch<React.SetStateAction<File | null>>
 }
 
 const FileContext = createContext<FileContextType | undefined>(undefined);
@@ -22,6 +28,11 @@ export const FileProvider = ({ children }: { children: ReactNode }) => {
   const [photographicID, setPhotographicID] = useState<File | null>(null);
   const [sitePlan, setSitePlan] = useState<File | null>(null);
   const [passportPhoto, setPassportPhoto] = useState<File | null>(null);
+  const [logo, setLogo] = useState<File | null>(null);
+  const [cadastral, setCadastral] = useState<File | null>(null);
+  const [other, setOther] = useState<File | null>(null);
+
+
 
   return (
     <FileContext.Provider
@@ -36,6 +47,12 @@ export const FileProvider = ({ children }: { children: ReactNode }) => {
         setSitePlan,
         passportPhoto,
         setPassportPhoto,
+        logo,
+        setLogo,
+        cadastral,
+        setCadastral,
+        other,
+        setOther
       }}
     >
       {children}

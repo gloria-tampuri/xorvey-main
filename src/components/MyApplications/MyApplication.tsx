@@ -22,7 +22,7 @@ interface Form {
   clientReference: string;
 }
 const MyApplication = () => {
-  const [completed, setCompleted] = useState(false);
+  const [completed, setCompleted] = useState(true);
   const [allForms, setAllForms] = useState<Form[]>([]);
   const [filledForms, setFilledForms] = useState<Form[]>([]);
   const [unusedForms, setUnusedForms] = useState<Form[]>([]);

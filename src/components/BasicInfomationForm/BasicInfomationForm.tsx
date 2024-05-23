@@ -72,7 +72,6 @@ const BasicInfomationForm = () => {
     "hometown": hometown,
     "maritalStatus": maritalStatus,
     "nextOfKin":  nextOfKin,
-
     }
 
     localStorage.setItem('basicInfo', JSON.stringify(basicInfo));    

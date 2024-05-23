@@ -61,7 +61,13 @@ const LandDetails = () => {
     if (storedBasicInfo) {
       const basicInfo = JSON.parse(storedBasicInfo);
       // Merge data with basicInfo
-      const updatedBasicInfo = { ...basicInfo, ...data };
+      let updatedBasicInfo;
+      if (localStorage.getItem('type')==="Individual" || localStorage.getItem('type')==="Organization"){
+         updatedBasicInfo = { ...basicInfo, ...data };
+      }else if(localStorage.getItem('type')==="Joint"){
+        updatedBasicInfo = { ...basicInfo, "landDetails":{...data}};
+      }
+      // const updatedBasicInfo = { ...basicInfo, ...data };
       localStorage.setItem("basicInfo", JSON.stringify(updatedBasicInfo));
     }
   }, [data]);
@@ -70,7 +76,14 @@ const LandDetails = () => {
 
   const handleFormSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    const url = `${import.meta.env.VITE_APP_API_URL}new/apply`;
+    let url='';
+    if (localStorage.getItem('type')==="Individual"){
+       url = `${import.meta.env.VITE_APP_API_URL}new/apply`;
+    }else if(localStorage.getItem('type')==="Organization"){
+      url = `${import.meta.env.VITE_APP_API_URL}new/org-apply`;
+    }else if(localStorage.getItem('type')==="Joint"){
+      url = `${import.meta.env.VITE_APP_API_URL}new/joint-apply`;
+    }
     const dataEntered = localStorage.getItem("basicInfo");
     const parsedDataEntered = dataEntered ? JSON.parse(dataEntered) : {};
 

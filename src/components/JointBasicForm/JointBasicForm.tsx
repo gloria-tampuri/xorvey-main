@@ -393,54 +393,21 @@ const JointBasicForm = () => {
       email: person.email,
       hometown: person.hometown,
       nextOfKin: person.nextOfKin,
-      dateOfBirth: person.dateOfBirth,
+      applicantDOB:person.dateOfBirth && `${person.dateOfBirth}T00:00:00Z`,
       contactNumber: person.contactNumber,
       placeOfResidence: person.placeOfResidence,
       maritalStatus: person.maritalStatus
     }));
-    localStorage.setItem("personsData", JSON.stringify(personsData));
+    const basicInfo = {
+      'applicants':personsData
+    }
+      localStorage.setItem("basicInfo", JSON.stringify(basicInfo));
   };
 
-  // // Call the function whenever the 'persons' state changes
-  // useEffect(() => {
-  //   savePersonsDataToLocalStorage();
-  // }, [persons]);
+
 
   const type = localStorage.getItem("type");
-  // const handleToDocs = () => {
-  //   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  //   const phoneRegex = /^\d{10}$/;
-  //   // Email validation
-  //   if (!emailRegex.test(email)) {
-  //     alert("Please enter a valid email address");
-  //     return;
-  //   }
-
-  //   // Phone number validation
-  //   if (!phoneRegex.test(contactNumber)) {
-  //     alert("Please enter a valid phone number");
-  //     return;
-  //   }
-
-  //   // Check if any field is empty
-  //   if (
-  //     !applicantName ||
-  //     !mailingAddress ||
-  //     !email ||
-  //     !hometown ||
-  //     !nextOfKin ||
-  //     !dateOfBirth ||
-  //     !contactNumber ||
-  //     !placeOfResidence ||
-  //     !maritalStatus
-  //   ) {
-  //     alert("Please fill out all the required fields");
-  //     return;
-  //   }
-  //   setCurrentForm('organization document');
-  //   savePersonsDataToLocalStorage();
-  // };
-
+  
   const handleToDocs = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const phoneRegex = /^\d{10}$/;
