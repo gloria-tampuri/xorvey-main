@@ -24,6 +24,11 @@ import OrganisationPage from "./pages/organization";
 import IndividualPage from "./pages/individual";
 import PaymentPage from "./pages/payment";
 import { FileProvider } from "./context/FileContext";
+import SecretaryHome from "./components/SecretaryHome/SecretaryHome";
+import SecretaryLayout from "./pages/secretarylayout";
+import Chieflayout from "./pages/chieflayout";
+import Chiefhome from "./pages/chiefhome";
+import UsersPage from "./pages/users";
 
 const router = createBrowserRouter([
   {
@@ -133,6 +138,42 @@ const router = createBrowserRouter([
         path: ":inspectedapplicationId",
         element: <InspectedapplicationId />,
       },
+      
+    ],
+  },
+  {
+    path: "/secretaryhome",
+    element: (
+      <ProtectedRoute roleProp="APPLICANT">
+        <SecretaryLayout/>
+      </ProtectedRoute>
+    ),children: [
+      {
+        index: true,
+        element: <SecretaryHome />,
+      },
+      {
+        path: ":SecretaryapplicationId",
+        element: <InspectedapplicationId />,
+      },
+      
+    ],
+  },
+  {
+    path: "/chiefhome",
+    element: (
+      <ProtectedRoute roleProp="ADMIN">
+        <Chieflayout/>
+      </ProtectedRoute>
+    ),children: [
+      {
+        index: true,
+        element: <Chiefhome />,
+      },
+      {
+        path:"users",
+        element: <UsersPage />,
+      }
       
     ],
   },

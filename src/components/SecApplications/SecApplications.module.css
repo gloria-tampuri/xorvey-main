@@ -1,49 +1,10 @@
-.dash{
-    padding: 2rem 3rem ;
-    background-color: #F9FAFB;
-}
-
-.details{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.dashcard{
-    min-width: 30%;
-    padding: 1rem 2rem;
-    border: 1px solid #EAECF0;
-    box-shadow: 0 1px 2px 0 #1018281d;
-    border-radius: 0.5rem;
-}
-
-.lower{
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-top: 0.4rem;
-}
-.lower h1{
-    font-size: 36px;
-    font-weight: 600;
-}
-
-.lower p{
-    display: flex;
-    color: var(--green);
-    align-items: center;
-    background-color: #ECFDF3;
-    padding: 3px 10px;
-    border-radius: 1rem;
-}
-
 .application{
-    margin: 2rem 0;
     border: 1px solid #EAECF0;
     height: 80vh;
     overflow: scroll;
     border-radius: 1rem;
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+    background-color: white;
 }
 
 .head{

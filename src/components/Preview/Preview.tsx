@@ -80,6 +80,7 @@ const Preview = () => {
   const showFormInfo = () => {
     setShowTrack(false);
   };
+console.log(application);
 
 
   return (
@@ -185,8 +186,7 @@ const Preview = () => {
         </div>
       ) : (
         <>
-          {(application && type === "individual") ||
-            (type === "joint" && (
+          {(application && type === "individual" && (
               <div className={styles.info}>
                 <div className={styles.appli}>
                   <h3>Application</h3>

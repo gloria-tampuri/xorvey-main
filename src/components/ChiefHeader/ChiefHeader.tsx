@@ -1,7 +1,7 @@
 import LogoSvg from "../SVGs/LogoSvg";
-import styles from "./InspectorHeader.module.css";
-import { LuHome } from "react-icons/lu";
-import { CiBellOn } from "react-icons/ci";
+import styles from "./ChiefHeader.module.css";
+import { LuHome, LuUsers2 } from "react-icons/lu";
+import { CiBellOn, CiFileOn } from "react-icons/ci";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
 import { TiEyeOutline } from "react-icons/ti";
@@ -11,10 +11,12 @@ import { FaRegCircleQuestion } from "react-icons/fa6";
 import { useState, useEffect } from "react";
 import { CgMenu } from "react-icons/cg";
 import { TfiClose } from "react-icons/tfi";
-const InspectorHeader = () => {
+import { BsTicketPerforated } from "react-icons/bs";
+
+const ChiefHeader = () => {
     const location = useLocation();
-    // const isHomeActive = location.pathname === "/applicanthome";
-    const isApplicationsActive = location.pathname === "/inspectorhome";
+    const isHomeActive = location.pathname === "/applicanthome";
+    const isApplicationsActive = location.pathname === "/myapplications";
     const navigate = useNavigate(); // Hook to access the history object for navigation
     const [name, setName] = useState("");
     const [initials, setInitials] = useState("");
@@ -62,24 +64,25 @@ const InspectorHeader = () => {
             <ul>
               <li>
                 <Link
-                  to="/inspectorhome"
+                  to="/chiefhome"
                   className={`${styles.link} ${
-                    isApplicationsActive ? styles.activeLink : ""
+                    isHomeActive ? styles.activeLink : ""
                   }`}
                 >
                   <LuHome /> Home
                 </Link>
               </li>
-              {/* <li>
+              <li>
                 <Link
-                  to="/myapplications"
+                  to="users"
                   className={`${styles.link} ${
                     isApplicationsActive ? styles.activeLink : ""
                   }`}
                 >
-                  <SiGoogledocs /> My Applications
+                 <LuUsers2 />Users
                 </Link>
-              </li> */}
+              </li>
+              
             </ul>
           </nav>
           <div className={styles.info}>
@@ -163,6 +166,7 @@ const InspectorHeader = () => {
         )}
       </div>
     );
-}
+  };
 
-export default InspectorHeader
+
+export default ChiefHeader

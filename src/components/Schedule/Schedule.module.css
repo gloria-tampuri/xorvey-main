@@ -1,0 +1,68 @@
+.schedule {
+    border: 1px solid #EAECF0;
+    height: 80vh;
+    overflow: scroll;
+    border-radius: 1rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+    background-color: white;
+    padding: 1rem;
+}
+
+.head {
+    display: flex;
+    justify-content: space-between;
+}
+
+.add {
+    width: 2rem;
+    height: 2rem;
+    padding: 0.2rem;
+    background-color: var(--green);
+    display: grid;
+    place-content: center;
+    border-radius: 0.2rem;
+}
+
+.icon {
+    color: white;
+    font-size: 2rem;
+}
+
+.card {
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+    background-color: white;
+    padding: 1rem;
+    border: 1px solid #EAECF0;
+    margin-top: 1rem;
+}
+
+.name {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+}
+
+.name p {
+    color: var(--green);
+}
+
+.inspection {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.inspection p {
+    border: 1px solid #EAECF0;
+    padding: 0.3rem 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.date {
+    display: flex;
+    gap: 0.3rem;
+    align-items: center;
+}
+

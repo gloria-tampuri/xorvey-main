@@ -1,0 +1,101 @@
+.users{
+    background-color: #EAECF0;
+    min-height: 90vh;
+    padding: 2rem ;
+}
+.container{
+    width: 90%;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border: 1px solid #EAECF0;
+    height: 80vh;
+    overflow: scroll;
+    border-radius: 1rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+}
+
+ .filterDiv{
+    display: flex;
+    align-items: center;
+ } 
+.search{
+    display: flex;
+    font-size: 0.9rem;
+    gap: 1rem;
+    margin:1rem;
+    padding: 0.5rem;
+    border: 1px solid #D0D5DD;
+    border-radius: 0.4rem;
+    align-items: center;
+    width: 320px;
+  }
+
+  .search input{
+    background-color: white;
+    outline: none;
+    border: none;
+  }
+
+  .search .icon{
+    font-size: 1.4rem;
+  }
+
+  .filter{
+    border: 1px solid #D0D5DD;
+    border-radius: 0.4rem;
+    padding: 0.5rem;
+    display: flex;
+    gap: 0.3rem;
+  }
+
+  .filter select{
+    border: none;
+    background-color: white;
+  }
+
+  .filter select option:hover{
+background-color:#F2F4F7 ;
+  }
+
+  .adduser{
+    background-color: var(--green);
+    padding: 0.5rem;
+    border-radius: 0.4rem;
+    color: #ffffff;
+    margin-left: 1rem;
+  }
+  .adduser:hover{
+    background-color: var(--hover-green
+    );
+    cursor: pointer;
+  }
+  .tablehead {
+    padding: 0.5rem 1rem;
+    background-color: #F9FAFB;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .tablebody {
+    display: grid;
+    padding: 0.5rem 1rem;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+    font-size: 0.8rem;
+    border-bottom: 1px solid #EAECF0;
+  }
+
+  

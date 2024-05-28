@@ -17,6 +17,7 @@ const AllForms = () => {
   }
 
   const { currentForm } = formCtx;
+  console.log(currentForm);
   
   
 

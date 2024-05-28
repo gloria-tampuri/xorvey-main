@@ -55,6 +55,7 @@ if (!formCtx) {
  
              // Extract the data from the response
              const data = response.data;
+             console.log(data);
              
              // Update the status state based on the response data
              setStatus(data.success);
@@ -93,6 +94,7 @@ if (!formCtx) {
       try {
           const url = `${import.meta.env.VITE_APP_API_URL}pay/transactions`;
           const response = await authorizedFetch(url, requestData);
+          console.log('Response:', response?.data.data); 
           localStorage.setItem('checkoutUrl', response?.data?.data.checkoutUrl)
           localStorage.setItem('clientReference', response?.data?.data.clientReference)
 
@@ -128,6 +130,7 @@ if (!formCtx) {
       try {
           const url = `${import.meta.env.VITE_APP_API_URL}pay/transactions`;
           const response = await authorizedFetch(url, requestData);
+          console.log('Response:', response?.data.data); 
           localStorage.setItem('checkoutUrl', response?.data?.data.checkoutUrl)
           localStorage.setItem('clientReference', response?.data?.data.clientReference)
 
@@ -163,6 +166,7 @@ if (!formCtx) {
       try {
           const url = `${import.meta.env.VITE_APP_API_URL}pay/transactions`;
           const response = await authorizedFetch(url, requestData);
+          console.log('Response:', response?.data.data); 
           localStorage.setItem('checkoutUrl', response?.data?.data.checkoutUrl)
           localStorage.setItem('clientReference', response?.data?.data.clientReference)
 

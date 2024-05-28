@@ -18,26 +18,54 @@ const DocumentForm = () => {
     setPhotographicID,
     setSitePlan,
     setPassportPhoto,
+   
   } = useFileContext();
-
+  // console.log(indenture,formerAllocation);
+  
   const componentCtx = useContext(ComponentTypeContext);
   if (!componentCtx) {
     return null;
   }
   const { setCurrentComponent } = componentCtx;
 
+  // const handleFileChange = (
+  //   e: React.ChangeEvent<HTMLInputElement>,
+  //   setFile: React.Dispatch<React.SetStateAction<File | null>>
+  // ) => {
+  //   const selectedFile = e.target.files?.[0] || null;
+  //   setFile(selectedFile);
+  //   const pTag = e.target.previousElementSibling as HTMLElement;
+  //   if (pTag && pTag.tagName.toLowerCase() === 'p') {
+  //     pTag.textContent = selectedFile ? selectedFile.name : 'No file chosen';
+  //   }
+  // };
+
   const handleFileChange = (
     e: React.ChangeEvent<HTMLInputElement>,
     setFile: React.Dispatch<React.SetStateAction<File | null>>
   ) => {
     const selectedFile = e.target.files?.[0] || null;
-    setFile(selectedFile);
+    if (selectedFile) {
+      const label = e.target.parentElement?.previousElementSibling?.textContent;
+      if (label) {
+        const newFileName = `${label.trim().replace(/\*/g, '')}.${selectedFile.name.split('.').pop()}`;
+        const renamedFile = new File([selectedFile], newFileName, { type: selectedFile.type });
+        setFile(renamedFile);
+    console.log(renamedFile);
+
+      } else {
+        setFile(selectedFile);
+      }
+    } else {
+      setFile(null);
+    }
+    
     const pTag = e.target.previousElementSibling as HTMLElement;
     if (pTag && pTag.tagName.toLowerCase() === 'p') {
       pTag.textContent = selectedFile ? selectedFile.name : 'No file chosen';
     }
   };
-
+  
   const handleToPreviousForm = () => {
     setCurrentForm('basic');
   };

@@ -19,9 +19,9 @@ const Login = () => {
   });
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate(); // Hook to access the history object for navigation
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-  const [loading, setLoading] = useState(false); // State to track loading
+  const [loading, setLoading] = useState(false);
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -31,7 +31,6 @@ const Login = () => {
     setIsEnabled(!isEnabled);
   };
 
-  //Timer
   useEffect(() => {
     const timer = setInterval(() => {
       if (timeRemaining.seconds > 0) {
@@ -54,8 +53,6 @@ const Login = () => {
 
   const api = `${import.meta.env.VITE_APP_API_URL}auth/login`;
 
- 
-  
   const loginHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
@@ -63,7 +60,7 @@ const Login = () => {
       emailOrPhone: email,
       password: password,
     };
-  
+
     try {
       const response = await fetch(api, {
         method: "POST",
@@ -72,42 +69,19 @@ const Login = () => {
         },
         body: JSON.stringify(data),
       });
-  
+
       if (response.ok) {
         const responseData = await response.json();
-  
-        // Convert the user object to a string before storing in local storage
+
         localStorage.setItem("user", JSON.stringify(responseData.user));
         localStorage.setItem("token", responseData.token);
         localStorage.setItem("isLoggedIn", "true");
         localStorage.setItem("role", responseData.user.role);
-        
-        if (responseData.user.role === "APPLICANT") {
-          // Retrieve the token from local storage
-          const token = localStorage.getItem("token");
-  
-          // Set the Authorization header with the token value
-          const config = {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          };
-  
-          // Make the GET request with Axios
-          const apiUrl = `${import.meta.env.VITE_APP_API_URL}new/applications`;
-          axios.get(apiUrl, config)
-            .then(response => {
-              // Handle the successful response
-              if (response.data.success) {
-                // Navigate to my applications
-                navigate("/myapplications");
-              }
-            })
-            .catch(error => {
-              // Handle the error
-              console.error('Error:', error);
-            });
-  
+
+        const role = responseData.user.role;
+        if (role === "ADMIN") {
+          navigate("/chiefhome");
+        } else {
           navigate("/applicanthome");
         }
       } else {
@@ -119,7 +93,7 @@ const Login = () => {
       setLoading(false);
     }
   };
-  
+
   return (
     <div className={styles.signUp}>
       <div className={styles.left}>
@@ -129,7 +103,7 @@ const Login = () => {
         <Link to="/" className={styles.logo}>
           <LogoSvg />
         </Link>
-        <img src={cert} alt="certifcation text" />
+        <img src={cert} alt="certification text" />
         <div className={styles.form}>
           <h3>Log in</h3>
           <form onSubmit={loginHandler}>
@@ -140,9 +114,7 @@ const Login = () => {
                 placeholder="Enter your email or phone number"
                 required
                 value={email}
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className={styles.section}>
@@ -190,7 +162,9 @@ const Login = () => {
                 </Link>
               </div>
             </div>
-            <button type="submit" disabled={loading}>{loading ?<AiOutlineLoading3Quarters style={{fontSize:"2rem"}}/>: 'Login'}</button>
+            <button type="submit" disabled={loading}>
+              {loading ? <AiOutlineLoading3Quarters style={{ fontSize: "2rem" }} /> : 'Login'}
+            </button>
           </form>
           <p className={styles.note}>
             Don't have an account?
