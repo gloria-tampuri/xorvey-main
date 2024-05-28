@@ -29,6 +29,7 @@ import SecretaryLayout from "./pages/secretarylayout";
 import Chieflayout from "./pages/chieflayout";
 import Chiefhome from "./pages/chiefhome";
 import UsersPage from "./pages/users";
+import { AddOfficerContext, AddOfficerContextProvider } from "./context/AddOfficerContext";
 
 const router = createBrowserRouter([
   {
@@ -181,6 +182,7 @@ const router = createBrowserRouter([
 function App() {
   return (
     <FormProvider>
+      <AddOfficerContextProvider>
       <ComponentTypeContextProvider>
         <ApproveModalContextProvider>
           <DeniedModalContextProvider>
@@ -192,6 +194,7 @@ function App() {
           </DeniedModalContextProvider>
         </ApproveModalContextProvider>
       </ComponentTypeContextProvider>
+      </AddOfficerContextProvider>
     </FormProvider>
   );
 }

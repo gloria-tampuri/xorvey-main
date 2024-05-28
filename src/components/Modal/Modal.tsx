@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import classes from './Modal.module.css'
 import { ApproveModalContext } from '../../context/ShowApprovedModalContext'
+import { AddOfficerContext } from '../../context/AddOfficerContext'
 
 interface ModalProps {
     children: React.ReactNode
@@ -8,9 +9,11 @@ interface ModalProps {
 
 const Backdrop: React.FC = () => {
     const { hideApproveModal } = useContext(ApproveModalContext)!
-   
+    const userCtx= useContext(AddOfficerContext)!
+    const {hideAddOfficer } = userCtx
     const closeModal = () => {
-        hideApproveModal()    
+        hideApproveModal() 
+        hideAddOfficer()   
     }
 
     return <div onClick={closeModal} className={classes.backdrop} />
