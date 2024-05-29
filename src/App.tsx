@@ -29,7 +29,7 @@ import SecretaryLayout from "./pages/secretarylayout";
 import Chieflayout from "./pages/chieflayout";
 import Chiefhome from "./pages/chiefhome";
 import UsersPage from "./pages/users";
-import { AddOfficerContext, AddOfficerContextProvider } from "./context/AddOfficerContext";
+import {  AddOfficerContextProvider } from "./context/AddOfficerContext";
 
 const router = createBrowserRouter([
   {

@@ -1,7 +1,7 @@
 import LogoSvg from "../SVGs/LogoSvg";
 import styles from "./ChiefHeader.module.css";
 import { LuHome, LuUsers2 } from "react-icons/lu";
-import { CiBellOn, CiFileOn } from "react-icons/ci";
+import { CiBellOn,} from "react-icons/ci";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
 import { TiEyeOutline } from "react-icons/ti";
@@ -11,7 +11,6 @@ import { FaRegCircleQuestion } from "react-icons/fa6";
 import { useState, useEffect } from "react";
 import { CgMenu } from "react-icons/cg";
 import { TfiClose } from "react-icons/tfi";
-import { BsTicketPerforated } from "react-icons/bs";
 
 const ChiefHeader = () => {
     const location = useLocation();

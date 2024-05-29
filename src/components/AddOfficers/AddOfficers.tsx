@@ -9,7 +9,7 @@ const AddOfficers = () => {
   const [role, setRole] = useState("Secretary");
 
 const userCtx= useContext(AddOfficerContext)!
- const {addOfficer,hideAddOfficer } = userCtx
+ const {hideAddOfficer } = userCtx
   return (
     <Modal>
       <div className={styles.svg}>

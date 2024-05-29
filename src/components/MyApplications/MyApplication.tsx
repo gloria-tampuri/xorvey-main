@@ -120,6 +120,7 @@ console.log(allForms);
               <p>Payment Status</p>
               <p>Amount(GHC)</p>
               <p>Status</p>
+              <p>Actions</p>
             </div>
             {filledForms?.map((form, index) => (
               <div className={styles.tablebody}>
@@ -131,21 +132,21 @@ console.log(allForms);
                 <div>
                   <p>{form.type}</p>
                 </div>
-                <div className={styles.date}>{form.createdAt}</div>
-                <div>
+                <div className={styles.date}>{new Date(form.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</div>                <div>
                   <p>Full Payment</p>
                 </div>
                 <div>
                   <p>200.00</p>
                 </div>
                 <div className={styles.status}>
-                  <p>
+                  <p className={`${form.status === "PENDING" ? styles.pending : form.status ==="APPROVED" ?styles.approved:styles.denied}`}>
                     <span>
                       <BsDot style={{ fontSize: "1.2rem" }} />
                     </span>
                     {form.status}
                   </p>
-                  <HiOutlineDotsVertical
+                </div>
+                <p className={styles.actions}> <HiOutlineDotsVertical
                     onClick={() => {
                       setShowContinueArray((prevShowContinueArray) => {
                         const newShowContinueArray = [...prevShowContinueArray];
@@ -155,7 +156,7 @@ console.log(allForms);
                       });
                     }}
                   />
-                  {showContinueArray[index] && (
+                   {showContinueArray[index] && (
                     <div className={styles.continue}>
                       <Link to={`${form.uniqueFormID}`} className={styles.card}>
                         View Application
@@ -165,7 +166,8 @@ console.log(allForms);
                       </Link>
                     </div>
                   )}
-                </div>
+                  </p>
+                 
               </div>
             ))}
           </div>

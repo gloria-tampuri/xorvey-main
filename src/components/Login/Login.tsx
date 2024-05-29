@@ -9,7 +9,6 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import cheif from "/src/assets/Images/Frame 137.png";
 import cert from "/src/assets/Images/ALLOCATION CERTIFICATION.png";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import axios from "axios";
 
 const Login = () => {
   const [isEnabled, setIsEnabled] = useState(false);

@@ -5,10 +5,18 @@ import { HiOutlineDotsVertical } from "react-icons/hi";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { FiUserCheck, FiUserMinus } from "react-icons/fi";
 import { RiDeleteBin6Line } from "react-icons/ri";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AddOfficerContext } from "../../context/AddOfficerContext";
 import AddOfficers from "../AddOfficers/AddOfficers";
+import axios from "axios";
 
+interface Users{
+  name:string;
+  phoneNumber:string;
+  activeStatus:boolean;
+  email:string;
+  role:string;
+}
 const Users = () => {
   const [showMore, setMore] = useState(false);
   const handleShowmore = () => {
@@ -16,6 +24,36 @@ const Users = () => {
   };
  const userCtx= useContext(AddOfficerContext)!
  const {addOfficer,showAddOfficer } = userCtx
+
+ const [allUsers, setUsers]=useState<Users[]>([]);
+
+useEffect(() => {
+  const fetchUsers = async () => {
+    const token = localStorage.getItem('token');
+    console.log(token);
+
+    if (!token) {
+      console.error('No token found');
+      return;
+    }
+
+    try {
+      const response = await axios.get(`${import.meta.env.VITE_APP_API_URL}all/users`, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      console.log('Response:', response.data);
+      setUsers(response.data.users);
+    } catch (error) {
+      console.error('Error making request:', error);
+    }
+  };
+
+  fetchUsers();
+}, []); 
+
+console.log(allUsers);
   return (
     <div className={styles.users}>
       <div className={styles.container}>
@@ -50,12 +88,12 @@ const Users = () => {
             <p>Action</p>
           </div>
         </div>
-        <div className={styles.tablebody}>
-          <p>Gloria</p>
-          <p>gloria@gmail.com</p>
-          <p>010201020102</p>
-          <p>Applicant</p>
-          <p>Active</p>
+       {allUsers.map(user=><div className={styles.tablebody}>
+          <p>{user.name}</p>
+          <p>{user.email}</p>
+          <p>{user.phoneNumber}</p>
+          <p>{user.role}</p>
+          <p>{user.activeStatus === true ? 'Active':'Not Active'}</p>
           <p>
             <HiOutlineDotsVertical onClick={handleShowmore} />
             {showMore && (
@@ -79,7 +117,7 @@ const Users = () => {
               </div>
             )}
           </p>
-        </div>
+        </div>) }
       </div>
       {addOfficer && <AddOfficers/>}
     </div>
