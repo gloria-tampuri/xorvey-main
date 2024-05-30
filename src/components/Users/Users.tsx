@@ -1,5 +1,3 @@
-
-
 import { CiSearch } from "react-icons/ci";
 import styles from "./Users.module.css";
 import { LuListFilter } from "react-icons/lu";
@@ -35,24 +33,27 @@ const Users = () => {
 
   useEffect(() => {
     const fetchUsers = async () => {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem("token");
       console.log(token);
 
       if (!token) {
-        console.error('No token found');
+        console.error("No token found");
         return;
       }
 
       try {
-        const response = await axios.get(`${import.meta.env.VITE_APP_API_URL}all/users`, {
-          headers: {
-            'Authorization': `Bearer ${token}`
+        const response = await axios.get(
+          `${import.meta.env.VITE_APP_API_URL}all/users`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
           }
-        });
-        console.log('Response:', response.data);
+        );
+        console.log("Response:", response.data);
         setUsers(response.data.users);
       } catch (error) {
-        console.error('Error making request:', error);
+        console.error("Error making request:", error);
       }
     };
 
@@ -87,8 +88,12 @@ const Users = () => {
       pageNumbers.push(i);
     }
 
-    return pageNumbers.map(number => (
-      <span key={number} onClick={() => handleClick(number)} className={currentPage === number ? styles.active : ''}>
+    return pageNumbers.map((number) => (
+      <span
+        key={number}
+        onClick={() => handleClick(number)}
+        className={currentPage === number ? styles.active : ""}
+      >
         {number}
       </span>
     ));
@@ -113,7 +118,9 @@ const Users = () => {
                 <option>Pending</option>
               </select>
             </div>
-            <p className={styles.adduser} onClick={showAddOfficer}>Add Officers</p>
+            <p className={styles.adduser} onClick={showAddOfficer}>
+              Add Officers
+            </p>
           </div>
         </div>
         <div>
@@ -134,7 +141,7 @@ const Users = () => {
             <p>{user.email}</p>
             <p>{user.phoneNumber}</p>
             <p>{user.role}</p>
-            <p>{user.activeStatus ? 'Active' : 'Not Active'}</p>
+            <p>{user.activeStatus ? "Active" : "Not Active"}</p>
             <p>
               <HiOutlineDotsVertical onClick={() => handleShowmore(index)} />
               {activeUserIndex === index && (
@@ -161,10 +168,20 @@ const Users = () => {
           </div>
         ))}
         <div className={styles.pagination}>
-          <span onClick={handlePrevious} className={currentPage === 1 ? styles.disabled : ''}>  Previous</span>
-          <div>          {renderPageNumbers()}
-</div>
-          <span onClick={handleNext} className={currentPage === totalPages ? styles.disabled : ''}>Next</span>
+          <span
+            onClick={handlePrevious}
+            className={currentPage === 1 ? styles.disabled : ""}
+          >
+            {" "}
+            Previous
+          </span>
+          <div> {renderPageNumbers()}</div>
+          <span
+            onClick={handleNext}
+            className={currentPage === totalPages ? styles.disabled : ""}
+          >
+            Next
+          </span>
         </div>
       </div>
       {addOfficer && <AddOfficers />}
