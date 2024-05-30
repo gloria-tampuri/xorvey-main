@@ -3,7 +3,7 @@ import { IoMdArrowBack } from "react-icons/io";
 import { LuEye } from "react-icons/lu";
 import { GoArrowUpRight } from "react-icons/go";
 import Ticket from "../Ticket/Ticket";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -44,7 +44,7 @@ const Preview = () => {
   const location = useLocation();
   const pathname = location.pathname;
   const uniqueFormID = pathname.split("/").pop();
-
+  const navigate =useNavigate()
   useEffect(() => {
     const token = localStorage.getItem("token");
 
@@ -82,14 +82,17 @@ const Preview = () => {
   };
 console.log(application);
 
+const handleBack = () => {
+  navigate(-1);
+};
 
   return (
     <div className={styles.preview}>
       <div className={styles.head}>
-        <Link to="/myapplications" className={styles.link}>
+        <div onClick={handleBack} className={styles.link}>
           <IoMdArrowBack />
           Back
-        </Link>
+        </div>
         <div className={styles.links}>
           <p
             className={`${showTrack === false ? styles.previewlink : ""}`}

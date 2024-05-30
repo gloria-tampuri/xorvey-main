@@ -2,12 +2,13 @@ import { IoIosArrowRoundUp } from "react-icons/io";
 import styles from "./SecretaryHome.module.css";
 import SecApplications from "../SecApplications/SecApplications";
 import Schedule from "../Schedule/Schedule";
+import { Link } from "react-router-dom";
 
 const SecretaryHome = () => {
   return (
     <div className={styles.home}>
       <div className={styles.new}>
-        <p>New Application</p>
+        <Link to='/applicanthome'>New Application</Link>
       </div>
 
       <div className={styles.main}>

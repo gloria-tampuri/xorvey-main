@@ -121,6 +121,7 @@ import { LuListFilter } from 'react-icons/lu';
 import { CiSearch } from 'react-icons/ci';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 interface ShowActionsMap {
   [key: string]: boolean;
@@ -235,7 +236,7 @@ const SecApplications = () => {
                 />
                 {showActionsMap[app.uniqueFormID] && (
                   <div className={styles.action1}>
-                    <p>View Application</p>
+                    <p><Link to={`${app.uniqueFormID}`}> View Application</Link></p>
                     <p>Assign Inspector</p>
                   </div>
                 )}

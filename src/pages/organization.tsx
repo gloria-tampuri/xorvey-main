@@ -1,38 +1,17 @@
-// import { useEffect, useState } from "react";
-// import ApplicantHeader from "../components/ApplicantHeader/ApplicantHeader"
-// import OrganizationForms from "../components/OrganizationForms/OrganizationForms"
-
-// const OrganisationPage = () => {
-//   const [refreshed, setRefreshed] = useState(false);
-
-//   useEffect(() => {
-//     if (!refreshed) {
-//       window.location.reload(); 
-//       setRefreshed(true);
-//       console.log('refered!!!!!!!!!!!!');
-      
-//     }
-//   }, [refreshed]);  
-//   return (
-//     <div>
-//                 <ApplicantHeader/>
-//               <OrganizationForms/>
-//         </div>
-//   )
-// }
-
-// export default OrganisationPage
 
 
 import ApplicantHeader from "../components/ApplicantHeader/ApplicantHeader";
+import ChiefHeader from "../components/ChiefHeader/ChiefHeader";
 import OrganizationForms from "../components/OrganizationForms/OrganizationForms";
+import SecretaryHeader from "../components/SecretaryHeader/SecretaryHeader";
 
 const OrganisationPage = () => {
   
+  const role = localStorage.getItem("role")
 
   return (
     <div>
-      <ApplicantHeader />
+       {role ==="APPLICANT"?<ApplicantHeader/>:role==="ADMIN"?<ChiefHeader/>:<SecretaryHeader/>}
       <OrganizationForms />
     </div>
   );

@@ -4,6 +4,7 @@ import SecApplications from "../SecApplications/SecApplications";
 import Schedule from "../Schedule/Schedule";
 import axios from 'axios';
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 interface Form {
   uniqueFormID: string;
@@ -50,7 +51,7 @@ console.log(allApplications);
   return (
     <div className={styles.home}>
       <div className={styles.new}>
-        <p>New Application</p>
+      <Link to='/applicanthome' className={styles.link}>New Application</Link>
       </div>
 
       <div className={styles.main}>

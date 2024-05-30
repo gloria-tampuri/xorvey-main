@@ -32,6 +32,7 @@ import UsersPage from "./pages/users";
 import {  AddOfficerContextProvider } from "./context/AddOfficerContext";
 import TicketsPage from "./pages/tickets";
 import CertificatesPage from "./pages/certificates";
+import ChiefapplicationId from "./pages/chiefapplicationId";
 
 const router = createBrowserRouter([
   {
@@ -57,15 +58,15 @@ const router = createBrowserRouter([
   {
     path: "/applicanthome",
     element: (
-      <ProtectedRoute roleProp="APPLICANT">
-        <ApplicantHomePage />
+      <ProtectedRoute roleProp={["APPLICANT", "ADMIN", "SECRETARY"]}>
+      <ApplicantHomePage />
       </ProtectedRoute>
     ),
   },
   {
     path: "/individual",
     element: (
-      <ProtectedRoute roleProp="APPLICANT">
+      <ProtectedRoute roleProp={["APPLICANT", "ADMIN", "SECRETARY"]}>
         <IndividualPage />
       </ProtectedRoute>
     ),
@@ -73,7 +74,7 @@ const router = createBrowserRouter([
   {
     path: "/payment",
     element: (
-      <ProtectedRoute roleProp="APPLICANT">
+      <ProtectedRoute roleProp={["APPLICANT", "ADMIN", "SECRETARY"]}>
         <PaymentPage />
       </ProtectedRoute>
     ),
@@ -81,7 +82,7 @@ const router = createBrowserRouter([
   {
     path: "/joint",
     element: (
-      <ProtectedRoute roleProp="APPLICANT">
+      <ProtectedRoute roleProp={["APPLICANT", "ADMIN", "SECRETARY"]}>
         <JointPage />
       </ProtectedRoute>
     ),
@@ -89,7 +90,7 @@ const router = createBrowserRouter([
   {
     path: "/organization",
     element: (
-      <ProtectedRoute roleProp="APPLICANT">
+      <ProtectedRoute roleProp={["APPLICANT", "ADMIN", "SECRETARY"]}>
         <OrganisationPage />
       </ProtectedRoute>
     ),
@@ -101,7 +102,7 @@ const router = createBrowserRouter([
   {
     path: "/myapplications",
     element: (
-      <ProtectedRoute roleProp="APPLICANT">
+      <ProtectedRoute roleProp={["APPLICANT", "ADMIN", "SECRETARY"]}>
         <Myapplicationslayout />
       </ProtectedRoute>
     ),children: [
@@ -120,8 +121,25 @@ const router = createBrowserRouter([
   {
     path: "/help",
     element: (
-      <ProtectedRoute roleProp="APPLICANT">
+      <ProtectedRoute roleProp={["APPLICANT", "ADMIN", "SECRETARY", "INSPECTOR"]}>
         <HelpPage />
+      </ProtectedRoute>
+    ),
+  },
+
+  {
+    path: "/users",
+    element: (
+      <ProtectedRoute roleProp={[ "ADMIN", "SECRETARY"]}>
+        <UsersPage />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/tickets",
+    element: (
+      <ProtectedRoute roleProp={[ "ADMIN", "SECRETARY"]}>
+        <TicketsPage />
       </ProtectedRoute>
     ),
   },
@@ -129,7 +147,7 @@ const router = createBrowserRouter([
   {
     path: "/inspectorhome",
     element: (
-      <ProtectedRoute roleProp="INSPECTOR">
+      <ProtectedRoute roleProp={["INSPECTOR"]}>
         <InspectorHomeLayout/>
       </ProtectedRoute>
     ),children: [
@@ -147,7 +165,7 @@ const router = createBrowserRouter([
   {
     path: "/secretaryhome",
     element: (
-      <ProtectedRoute roleProp="SECRETARY">
+      <ProtectedRoute roleProp={["SECRETARY"]}>
         <SecretaryLayout/>
       </ProtectedRoute>
     ),children: [
@@ -158,14 +176,8 @@ const router = createBrowserRouter([
       {
         path: ":SecretaryapplicationId",
         element: <InspectedapplicationId />,
-      }, {
-        path:"users",
-        element: <UsersPage />,
       },
       {
-        path:"tickets",
-        element: <TicketsPage />,
-      },{
         path:"certificates",
         element: <CertificatesPage />,
       }
@@ -175,7 +187,7 @@ const router = createBrowserRouter([
   {
     path: "/chiefhome",
     element: (
-      <ProtectedRoute roleProp="ADMIN">
+      <ProtectedRoute roleProp={["ADMIN"]}>
         <Chieflayout/>
       </ProtectedRoute>
     ),children: [
@@ -184,9 +196,10 @@ const router = createBrowserRouter([
         element: <Chiefhome />,
       },
       {
-        path:"users",
-        element: <UsersPage />,
-      }
+        path: ":chiefapplicationId",
+        element: <ChiefapplicationId />,
+      },
+      
       
     ],
   },

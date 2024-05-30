@@ -73,7 +73,7 @@ const ChiefHeader = () => {
               </li>
               <li>
                 <Link
-                  to="users"
+                  to="/users"
                   className={`${styles.link} ${
                     isApplicationsActive ? styles.activeLink : ""
                   }`}

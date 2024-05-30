@@ -1,30 +1,61 @@
-import { PropsWithChildren, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+// import { PropsWithChildren, useEffect } from 'react'
+// import { useNavigate } from 'react-router-dom'
+
+// type ProtectedRouteProps = PropsWithChildren<{
+//     roleProp: string
+// }>
+
+// export default function ProtectedRoute({
+//     children,
+//     roleProp,
+// }: ProtectedRouteProps): JSX.Element {
+//     const navigate = useNavigate()
+
+//     useEffect(() => {
+//         const isLoggedIn = localStorage.getItem('isLoggedIn')
+//         if (!isLoggedIn) {
+//             navigate('/login')
+//         }
+//     }, [navigate])
+
+//     useEffect(() => {
+//         const role = localStorage.getItem('role')
+
+//         if (role !== roleProp) {
+//             navigate('/login')
+//         }
+//     }, [navigate, roleProp])
+
+//     return <>{children}</>
+// }
+
+import { PropsWithChildren, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 type ProtectedRouteProps = PropsWithChildren<{
-    roleProp: string
-}>
+  roleProp: string[];
+}>;
 
 export default function ProtectedRoute({
-    children,
-    roleProp,
+  children,
+  roleProp,
 }: ProtectedRouteProps): JSX.Element {
-    const navigate = useNavigate()
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        const isLoggedIn = localStorage.getItem('isLoggedIn')
-        if (!isLoggedIn) {
-            navigate('/login')
-        }
-    }, [navigate])
+  useEffect(() => {
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    if (!isLoggedIn) {
+      navigate('/login');
+    }
+  }, [navigate]);
 
-    useEffect(() => {
-        const role = localStorage.getItem('role')
+  useEffect(() => {
+    const role = localStorage.getItem('role');
 
-        if (role !== roleProp) {
-            navigate('/login')
-        }
-    }, [navigate, roleProp])
+    if (!role || !roleProp.includes(role)) {
+      navigate('/login');
+    }
+  }, [navigate, roleProp]);
 
-    return <>{children}</>
+  return <>{children}</>;
 }
