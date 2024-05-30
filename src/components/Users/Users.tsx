@@ -1,3 +1,5 @@
+
+
 import { CiSearch } from "react-icons/ci";
 import styles from "./Users.module.css";
 import { LuListFilter } from "react-icons/lu";
@@ -10,50 +12,88 @@ import { AddOfficerContext } from "../../context/AddOfficerContext";
 import AddOfficers from "../AddOfficers/AddOfficers";
 import axios from "axios";
 
-interface Users{
-  name:string;
-  phoneNumber:string;
-  activeStatus:boolean;
-  email:string;
-  role:string;
+interface Users {
+  name: string;
+  phoneNumber: string;
+  activeStatus: boolean;
+  email: string;
+  role: string;
 }
+
 const Users = () => {
-  const [showMore, setMore] = useState(false);
-  const handleShowmore = () => {
-    setMore(!showMore);
-  };
- const userCtx= useContext(AddOfficerContext)!
- const {addOfficer,showAddOfficer } = userCtx
-
- const [allUsers, setUsers]=useState<Users[]>([]);
-
-useEffect(() => {
-  const fetchUsers = async () => {
-    const token = localStorage.getItem('token');
-    console.log(token);
-
-    if (!token) {
-      console.error('No token found');
-      return;
-    }
-
-    try {
-      const response = await axios.get(`${import.meta.env.VITE_APP_API_URL}all/users`, {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      });
-      console.log('Response:', response.data);
-      setUsers(response.data.users);
-    } catch (error) {
-      console.error('Error making request:', error);
-    }
+  const [activeUserIndex, setActiveUserIndex] = useState<number | null>(null);
+  const handleShowmore = (index: number) => {
+    setActiveUserIndex(activeUserIndex === index ? null : index);
   };
 
-  fetchUsers();
-}, []); 
+  const userCtx = useContext(AddOfficerContext)!;
+  const { addOfficer, showAddOfficer } = userCtx;
 
-console.log(allUsers);
+  const [allUsers, setUsers] = useState<Users[]>([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const usersPerPage = 10;
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      const token = localStorage.getItem('token');
+      console.log(token);
+
+      if (!token) {
+        console.error('No token found');
+        return;
+      }
+
+      try {
+        const response = await axios.get(`${import.meta.env.VITE_APP_API_URL}all/users`, {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+        console.log('Response:', response.data);
+        setUsers(response.data.users);
+      } catch (error) {
+        console.error('Error making request:', error);
+      }
+    };
+
+    fetchUsers();
+  }, []);
+
+  const indexOfLastUser = currentPage * usersPerPage;
+  const indexOfFirstUser = indexOfLastUser - usersPerPage;
+  const currentUsers = allUsers.slice(indexOfFirstUser, indexOfLastUser);
+
+  const totalPages = Math.ceil(allUsers.length / usersPerPage);
+
+  const handleClick = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const handlePrevious = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const handleNext = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const renderPageNumbers = () => {
+    const pageNumbers = [];
+    for (let i = 1; i <= totalPages; i++) {
+      pageNumbers.push(i);
+    }
+
+    return pageNumbers.map(number => (
+      <span key={number} onClick={() => handleClick(number)} className={currentPage === number ? styles.active : ''}>
+        {number}
+      </span>
+    ));
+  };
+
   return (
     <div className={styles.users}>
       <div className={styles.container}>
@@ -67,7 +107,7 @@ console.log(allUsers);
             <div className={styles.filter}>
               <LuListFilter />
               <select>
-                <option> Filter</option>
+                <option>Filter</option>
                 <option>Denied</option>
                 <option>Approved</option>
                 <option>Pending</option>
@@ -88,38 +128,46 @@ console.log(allUsers);
             <p>Action</p>
           </div>
         </div>
-       {allUsers.map(user=><div className={styles.tablebody}>
-          <p>{user.name}</p>
-          <p>{user.email}</p>
-          <p>{user.phoneNumber}</p>
-          <p>{user.role}</p>
-          <p>{user.activeStatus === true ? 'Active':'Not Active'}</p>
-          <p>
-            <HiOutlineDotsVertical onClick={handleShowmore} />
-            {showMore && (
-              <div className={styles.more}>
-                <p>
-                  <MdOutlineRemoveRedEye />
-                  View Applications
-                </p>
-                <p>
-                  <FiUserCheck />
-                  Activate User
-                </p>
-                <p>
-                  <FiUserMinus />
-                  Deactivate User
-                </p>
-                <p>
-                  <RiDeleteBin6Line />
-                  Delete user
-                </p>
-              </div>
-            )}
-          </p>
-        </div>) }
+        {currentUsers.map((user, index) => (
+          <div key={index} className={styles.tablebody}>
+            <p>{user.name}</p>
+            <p>{user.email}</p>
+            <p>{user.phoneNumber}</p>
+            <p>{user.role}</p>
+            <p>{user.activeStatus ? 'Active' : 'Not Active'}</p>
+            <p>
+              <HiOutlineDotsVertical onClick={() => handleShowmore(index)} />
+              {activeUserIndex === index && (
+                <div className={styles.more}>
+                  <p>
+                    <MdOutlineRemoveRedEye />
+                    View Applications
+                  </p>
+                  <p>
+                    <FiUserCheck />
+                    Activate User
+                  </p>
+                  <p>
+                    <FiUserMinus />
+                    Deactivate User
+                  </p>
+                  <p>
+                    <RiDeleteBin6Line />
+                    Delete user
+                  </p>
+                </div>
+              )}
+            </p>
+          </div>
+        ))}
+        <div className={styles.pagination}>
+          <span onClick={handlePrevious} className={currentPage === 1 ? styles.disabled : ''}>  Previous</span>
+          <div>          {renderPageNumbers()}
+</div>
+          <span onClick={handleNext} className={currentPage === totalPages ? styles.disabled : ''}>Next</span>
+        </div>
       </div>
-      {addOfficer && <AddOfficers/>}
+      {addOfficer && <AddOfficers />}
     </div>
   );
 };

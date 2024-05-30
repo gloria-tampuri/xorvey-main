@@ -51,9 +51,9 @@ const ResetPassword = () => {
       const { userId } = optPrefix;
       userID = userId;
     }
-  
+    const officerid = Number(localStorage.getItem("id"));
     const data = {
-      userId: parseInt(userID), // Convert userID to integer
+      userId: parseInt(userID) || officerid, // Convert userID to integer
       newPassword: newPassword,
       confirmPassword: confirmPassword,
     };

@@ -70,16 +70,7 @@ const InspectorHeader = () => {
                   <LuHome /> Home
                 </Link>
               </li>
-              {/* <li>
-                <Link
-                  to="/myapplications"
-                  className={`${styles.link} ${
-                    isApplicationsActive ? styles.activeLink : ""
-                  }`}
-                >
-                  <SiGoogledocs /> My Applications
-                </Link>
-              </li> */}
+              
             </ul>
           </nav>
           <div className={styles.info}>

@@ -30,6 +30,8 @@ import Chieflayout from "./pages/chieflayout";
 import Chiefhome from "./pages/chiefhome";
 import UsersPage from "./pages/users";
 import {  AddOfficerContextProvider } from "./context/AddOfficerContext";
+import TicketsPage from "./pages/tickets";
+import CertificatesPage from "./pages/certificates";
 
 const router = createBrowserRouter([
   {
@@ -127,7 +129,7 @@ const router = createBrowserRouter([
   {
     path: "/inspectorhome",
     element: (
-      <ProtectedRoute roleProp="APPLICANT">
+      <ProtectedRoute roleProp="INSPECTOR">
         <InspectorHomeLayout/>
       </ProtectedRoute>
     ),children: [
@@ -145,7 +147,7 @@ const router = createBrowserRouter([
   {
     path: "/secretaryhome",
     element: (
-      <ProtectedRoute roleProp="APPLICANT">
+      <ProtectedRoute roleProp="SECRETARY">
         <SecretaryLayout/>
       </ProtectedRoute>
     ),children: [
@@ -156,7 +158,17 @@ const router = createBrowserRouter([
       {
         path: ":SecretaryapplicationId",
         element: <InspectedapplicationId />,
+      }, {
+        path:"users",
+        element: <UsersPage />,
       },
+      {
+        path:"tickets",
+        element: <TicketsPage />,
+      },{
+        path:"certificates",
+        element: <CertificatesPage />,
+      }
       
     ],
   },

@@ -74,7 +74,7 @@ const SecretaryHeader = () => {
               </li>
               <li>
                 <Link
-                  to="/myapplications"
+                  to="users"
                   className={`${styles.link} ${
                     isApplicationsActive ? styles.activeLink : ""
                   }`}
@@ -84,7 +84,7 @@ const SecretaryHeader = () => {
               </li>
               <li>
                 <Link
-                  to="/myapplications"
+                  to="certificates"
                   className={`${styles.link} ${
                     isApplicationsActive ? styles.activeLink : ""
                   }`}
@@ -94,7 +94,7 @@ const SecretaryHeader = () => {
               </li>
               <li>
                 <Link
-                  to="/myapplications"
+                  to="tickets"
                   className={`${styles.link} ${
                     isApplicationsActive ? styles.activeLink : ""
                   }`}

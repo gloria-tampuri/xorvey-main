@@ -76,12 +76,21 @@ const Login = () => {
         localStorage.setItem("token", responseData.token);
         localStorage.setItem("isLoggedIn", "true");
         localStorage.setItem("role", responseData.user.role);
+        localStorage.setItem("changePassword", responseData.user.changePassword)
+        localStorage.setItem("id", responseData.user.id)
 
         const role = responseData.user.role;
+        const passwordStatus = responseData.user.changePassword
         if (role === "ADMIN") {
           navigate("/chiefhome");
-        } else {
+        } else if(role === "APPLICANT") {
           navigate("/applicanthome");
+        }else if(passwordStatus ===true){
+          navigate("/resetpassword")
+        }else if(passwordStatus === false && role ==="SECRETARY"){
+          navigate("/secretaryhome")
+        }else if(passwordStatus === false && role ==="INSPECTOR"){
+          navigate("/inspectorhome")
         }
       } else {
         alert("Invalid email or password");
