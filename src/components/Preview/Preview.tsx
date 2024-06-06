@@ -35,6 +35,7 @@ interface Form {
   purposeOfLand: string;
   dateOfOriginalTransfer: string;
   location: string;
+  documents:[];
 }
 
 const Preview = () => {
@@ -212,7 +213,8 @@ const handleBack = () => {
                   </div>
                   <div className={styles.body2}>
                     <p>{application?.applicantName}</p>
-                    <p>{application?.applicantDOB}</p>
+                    <p>                    {new Date(application?.applicantDOB).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+</p>
                   </div>
                 </div>
                 <div className={styles.appli}>
@@ -254,7 +256,12 @@ const handleBack = () => {
                     <p>Former allocation</p>
                   </div>
                   <div className={styles.body2}>
-                    <p className={styles.attchements}>indeture.png</p>
+                    {/* <Link to={application.documents[0].url} className={styles.attchements}>indeture.png</Link> */}
+                     {application?.documents?.length > 0 && (
+        <Link to={application.documents[0].url} className={styles.attchements}>
+          indenture.png
+        </Link>
+      )}
                     <p className={styles.attchements}>allocation.jpeg</p>
                   </div>
                 </div>
@@ -309,9 +316,17 @@ const handleBack = () => {
                     <p>transferor contact</p>
                   </div>
                   <div className={styles.body3}>
-                    <p>{application?.dateOfOriginalTransfer}</p>
+                    <p>{new Date(
+                      application?.dateOfOriginalTransfer
+                    ).toLocaleDateString("en-US", {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}</p>
+                    
                     <p>{application?.purposeOfLand}</p>
                     <p>{application?.contactOfTransferor}</p>
+                    
                   </div>
                 </div>
                 <div className={styles.body2}>

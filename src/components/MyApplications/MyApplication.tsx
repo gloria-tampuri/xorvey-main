@@ -55,6 +55,30 @@ const MyApplication = () => {
       });
   }, []);
 
+  
+const token = localStorage.getItem("token");
+  
+// Set the Authorization header with the token value
+const config = {
+  headers: {
+    Authorization: `Bearer ${token}`,
+  },
+};
+
+// Make the GET request with Axios
+const apiUrl = `${import.meta.env.VITE_APP_API_URL}new/applications`;
+axios.get(apiUrl, config)
+  .then(response => {
+    console.log(response.data.success);
+  if(response.data.success){
+    setCompleted(false)
+  }
+  })
+  .catch(error => {
+    // Handle the error
+    console.error('Error:', error);
+  });
+
 
   const [showContinueArray, setShowContinueArray] = useState(
     Array(unusedForms.length).fill(false)
@@ -224,7 +248,7 @@ console.log(allForms);
                   <div>
                     <p></p>
                   </div>
-                  <div className={styles.status}>
+                  <div className={styles.actions}>
                     <HiOutlineDotsVertical
                       onClick={() => {
                         setShowContinueArray((prevShowContinueArray) => {

@@ -58,7 +58,7 @@ const Users = () => {
     };
 
     fetchUsers();
-  }, []);
+  }, [allUsers]);
 
   const indexOfLastUser = currentPage * usersPerPage;
   const indexOfFirstUser = indexOfLastUser - usersPerPage;
@@ -172,7 +172,7 @@ const Users = () => {
             onClick={handlePrevious}
             className={currentPage === 1 ? styles.disabled : ""}
           >
-            {" "}
+           
             Previous
           </span>
           <div> {renderPageNumbers()}</div>

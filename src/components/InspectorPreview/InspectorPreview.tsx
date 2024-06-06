@@ -13,35 +13,35 @@ import { AddProofModalContext } from "../../context/AddProofContext";
 import AddProofModal from "../AddProofModal/AddProofModal";
 
 
-interface Form {
-  uniqueFormID: string;
-  type: string;
-  createdAt: string;
-  status: string;
-  token: string;
-  serviceId: string;
-  formStatus: string;
-  clientReference: string;
-  organisationName: string;
-  applicantName: string;
-  applicantDOB: string;
-  contactNumber: string;
-  mailingAddress: string;
-  placeOfResidence: string;
-  emailAddress: string;
-  hometown: string;
-  maritalStatus: string;
-  nextOfKin: string;
-  landLocality: string;
-  siteName: string;
-  contactOfTransferor: string;
-  plotNumbers: string;
-  totalLandSize: string;
-  streetName: string;
-  purposeOfLand: string;
-  dateOfOriginalTransfer: string;
-  location: string;
-}
+// interface Form {
+//   uniqueFormID: string;
+//   type: string;
+//   createdAt: string;
+//   status: string;
+//   token: string;
+//   serviceId: string;
+//   formStatus: string;
+//   clientReference: string;
+//   organisationName: string;
+//   applicantName: string;
+//   applicantDOB: string;
+//   contactNumber: string;
+//   mailingAddress: string;
+//   placeOfResidence: string;
+//   emailAddress: string;
+//   hometown: string;
+//   maritalStatus: string;
+//   nextOfKin: string;
+//   landLocality: string;
+//   siteName: string;
+//   contactOfTransferor: string;
+//   plotNumbers: string;
+//   totalLandSize: string;
+//   streetName: string;
+//   purposeOfLand: string;
+//   dateOfOriginalTransfer: string;
+//   location: string;
+// }
 const InspectorPreview = () => {
   const { approveModal, showApproveModal } = useContext(ApproveModalContext)!;
   const { deniedModal, showDeniedModal } = useContext(DeniedModalContext)!;

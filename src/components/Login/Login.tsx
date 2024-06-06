@@ -9,6 +9,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import cheif from "/src/assets/Images/Frame 137.png";
 import cert from "/src/assets/Images/ALLOCATION CERTIFICATION.png";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import axios from "axios";
 
 const Login = () => {
   const [isEnabled, setIsEnabled] = useState(false);
@@ -84,7 +85,31 @@ const Login = () => {
         if (role === "ADMIN") {
           navigate("/chiefhome");
         } else if(role === "APPLICANT") {
-          navigate("/applicanthome");
+
+          const token = localStorage.getItem("token");
+  
+// Set the Authorization header with the token value
+const config = {
+  headers: {
+    Authorization: `Bearer ${token}`,
+  },
+};
+
+// Make the GET request with Axios
+const apiUrl = `${import.meta.env.VITE_APP_API_URL}new/applications`;
+axios.get(apiUrl, config)
+  .then(response => {
+    console.log(response.data.success);
+  if(response.data.success){
+    navigate('/myapplications')
+  }else{
+    navigate("/applicanthome");
+  }
+  })
+  .catch(error => {
+    // Handle the error
+    console.error('Error:', error);
+  });
         }else if(passwordStatus ===true){
           navigate("/resetpassword")
         }else if(passwordStatus === false && role ==="SECRETARY"){

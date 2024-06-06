@@ -14,8 +14,8 @@ import { TfiClose } from "react-icons/tfi";
 
 const ChiefHeader = () => {
     const location = useLocation();
-    const isHomeActive = location.pathname === "/applicanthome";
-    const isApplicationsActive = location.pathname === "/myapplications";
+    const isHomeActive = location.pathname === "/chiefhome";
+    const isApplicationsActive = location.pathname === "/users";
     const navigate = useNavigate(); // Hook to access the history object for navigation
     const [name, setName] = useState("");
     const [initials, setInitials] = useState("");
@@ -31,7 +31,7 @@ const ChiefHeader = () => {
       } else {
         console.error("User data not found in localStorage");
       }
-    }, []); // Empty dependency array ensures the effect runs only once on component mount
+    }, []); 
   
     const getInitials = (fullName: string) => {
       return fullName
